@@ -4,6 +4,7 @@ import com.digidata.escolar_geolocation.model.User;
 import com.digidata.escolar_geolocation.service.IJwtService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
@@ -16,8 +17,8 @@ import java.util.Date;
 @Service
 public class JwtService implements IJwtService {
 
-    private static final String SECRET =
-            "123456789123456789123456789123456789123456789";
+    @Value("${security.jwt.secret}")
+    private String SECRET = "";
 
     private Key getKey() {
         return Keys.hmacShaKeyFor(
