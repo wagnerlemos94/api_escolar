@@ -25,8 +25,8 @@ CREATE TABLE vehicles (
 CREATE TABLE locations (
                            id UUID PRIMARY KEY,
                            vehicle_id UUID,
-                           latitude NUMERIC(10,8),
-                           longitude NUMERIC(11,8),
-                           speed NUMERIC(5,2),
+                           latitude DOUBLE PRECISION,
+                           longitude DOUBLE PRECISION,
+                           speed DOUBLE PRECISION,
                            created_at TIMESTAMP
 );
