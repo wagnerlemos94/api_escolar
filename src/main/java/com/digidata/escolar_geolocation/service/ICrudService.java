@@ -8,7 +8,7 @@ import java.util.UUID;
 @Service
 public interface ICrudService<T, ID> {
 
-    T findById(ID id) throws Exception;
+    T findById(ID id);
     List<T> findAll();
     T create(T t);
     T update(T t, ID id);

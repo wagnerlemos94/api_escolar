@@ -1,5 +1,6 @@
 package com.digidata.escolar_geolocation.service.implement;
 
+import com.digidata.escolar_geolocation.excexption.ResourceNotFoundException;
 import com.digidata.escolar_geolocation.model.Location;
 import com.digidata.escolar_geolocation.model.Vehicle;
 import com.digidata.escolar_geolocation.repository.LocationRepository;
@@ -8,8 +9,6 @@ import com.digidata.escolar_geolocation.service.IVeichicleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -19,12 +18,12 @@ public class LocationService implements ILocationService<Location> {
     private final LocationRepository repository;
     private final IVeichicleService<Vehicle> veichicleService;
 
-    public Location findByLocation(UUID vehicleId) throws Exception {
-        return repository.findTopByVehicleIdOrderByCreatedAtDesc(vehicleId).orElseThrow(() -> new Exception("Recurso não encontrado"));
+    public Location findByLocation(UUID vehicleId){
+        return repository.findTopByVehicleIdOrderByCreatedAtDesc(vehicleId).orElseThrow(() -> new ResourceNotFoundException("Localização não encontrada para o veiculo"));
     }
 
     @Override
-    public Location create(Location location) throws Exception {
+    public Location create(Location location){
         veichicleService.findById(location.getVehicleId());
         return repository.save(location);
     }

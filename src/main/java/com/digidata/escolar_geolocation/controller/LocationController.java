@@ -19,7 +19,7 @@ public class LocationController{
     private final LocationResponse locationResponse = new LocationResponse();
 
     @GetMapping("/{vehicleId}")
-    public LocationResponse getLocation(@PathVariable UUID vehicleId) throws Exception {
+    public LocationResponse getLocation(@PathVariable UUID vehicleId){
         return locationResponse.to(service.findByLocation(vehicleId));
     }
 

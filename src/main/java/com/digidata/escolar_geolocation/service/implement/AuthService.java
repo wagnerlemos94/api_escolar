@@ -2,11 +2,13 @@ package com.digidata.escolar_geolocation.service.implement;
 
 import com.digidata.escolar_geolocation.controller.dto.request.LoginRequest;
 import com.digidata.escolar_geolocation.controller.dto.response.LoginResponse;
+import com.digidata.escolar_geolocation.excexption.UnauthorizedException;
 import com.digidata.escolar_geolocation.model.User;
 import com.digidata.escolar_geolocation.repository.UserRepository;
 import com.digidata.escolar_geolocation.service.IAuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
 
@@ -20,13 +22,19 @@ public class AuthService implements IAuthService {
 
     public LoginResponse login(LoginRequest request) {
 
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.cpf(),
-                        request.password()
-                )
-        );
-
+        try{
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            request.cpf(),
+                            request.password()
+                    )
+            );
+        } catch (BadCredentialsException e) {
+            throw new UnauthorizedException("Usuário ou senha inválidos");
+        }
+        catch (Exception e){
+            System.out.println("Erro ao fazer login");
+        }
         User user = repository.findByCpf(request.cpf())
                 .orElseThrow();
 

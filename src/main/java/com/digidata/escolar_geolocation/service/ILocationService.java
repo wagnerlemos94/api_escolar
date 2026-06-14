@@ -4,6 +4,6 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ILocationService<T>{
-    T findByLocation(UUID id) throws Exception;
-    T create(T entity) throws Exception;
+    T findByLocation(UUID id);
+    T create(T entity);
 }
