@@ -20,7 +20,9 @@ public class CorsConfig {
                 "http://localhost:3000",
                 "http://localhost:5173",
                 "http://localhost:8081",
-                "http://192.168.1.22:8085"
+                "http://192.168.1.22:8085",
+                "http://172.66.0.96",
+                "http://162.159.140.98"
         ));
 
         configuration.setAllowedMethods(List.of(
