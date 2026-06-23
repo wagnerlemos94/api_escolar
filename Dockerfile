@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN ./mvnw clean package --settings settings.xml -DskipTests
+RUN mvn clean package --settings settings.xml -DskipTests
 
 
 FROM eclipse-temurin:21-jdk
