@@ -4,8 +4,10 @@ WORKDIR /app
 
 COPY . .
 
-RUN mvn clean package --settings settings.xml -DskipTests
+ARG GITHUB_TOKEN
+ENV GITHUB_TOKEN=${GITHUB_TOKEN}
 
+RUN mvn clean package --settings settings.xml -DskipTests
 
 FROM eclipse-temurin:21-jdk
 
