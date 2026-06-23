@@ -1,8 +1,8 @@
 package com.digidata.escolar_geolocation.controller;
 
+import br.com.digidata.crud.service.ICrudService;
 import com.digidata.escolar_geolocation.controller.dto.request.IRequest;
 import com.digidata.escolar_geolocation.controller.dto.response.IResponse;
-import com.digidata.escolar_geolocation.service.ICrudService;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -24,7 +24,7 @@ public class CrudController<Request , Response, Model> implements ICrudControlle
 
     @Override
     public Response update(Request request, UUID id) {
-        return response.to(service.update(this.request.to(request), id));
+        return response.to(service.update(id, this.request.to(request)));
     }
 
     @Override

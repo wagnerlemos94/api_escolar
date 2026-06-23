@@ -1,19 +1,16 @@
 package com.digidata.escolar_geolocation.service.implement;
 
+import br.com.digidata.crud.service.CrudService;
 import com.digidata.escolar_geolocation.enums.Role;
 import com.digidata.escolar_geolocation.model.User;
 import com.digidata.escolar_geolocation.repository.UserRepository;
 import com.digidata.escolar_geolocation.service.IUserService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service

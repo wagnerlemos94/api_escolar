@@ -95,7 +95,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>br.com.digidata</groupId>
+			<artifactId>crud-core</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -117,5 +121,13 @@
 
 		</plugins>
 	</build>
-
+	<repositories>
+		<repository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>
+				https://maven.pkg.github.com/wagnerlemos94/crud-lib-spring
+			</url>
+		</repository>
+	</repositories>
 </project>
