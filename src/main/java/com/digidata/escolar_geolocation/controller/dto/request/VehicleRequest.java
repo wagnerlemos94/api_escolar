@@ -1,5 +1,6 @@
 package com.digidata.escolar_geolocation.controller.dto.request;
 
+import br.com.digidata.crud.controller.dto.request.IRequest;
 import com.digidata.escolar_geolocation.model.Vehicle;
 import lombok.Getter;
 import lombok.Setter;

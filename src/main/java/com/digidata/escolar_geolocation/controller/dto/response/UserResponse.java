@@ -1,5 +1,6 @@
 package com.digidata.escolar_geolocation.controller.dto.response;
 
+import br.com.digidata.crud.controller.dto.response.IResponse;
 import com.digidata.escolar_geolocation.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;

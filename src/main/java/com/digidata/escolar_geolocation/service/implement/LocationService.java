@@ -1,6 +1,6 @@
 package com.digidata.escolar_geolocation.service.implement;
 
-import com.digidata.escolar_geolocation.excexption.ResourceNotFoundException;
+import br.com.digidata.crud.exception.ResourceNotFoundException;
 import com.digidata.escolar_geolocation.model.Location;
 import com.digidata.escolar_geolocation.model.Vehicle;
 import com.digidata.escolar_geolocation.repository.LocationRepository;

@@ -1,5 +1,6 @@
 package com.digidata.escolar_geolocation.controller.dto.request;
 
+import br.com.digidata.crud.controller.dto.request.IRequest;
 import com.digidata.escolar_geolocation.enums.Role;
 import com.digidata.escolar_geolocation.model.User;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Component
-public class UserRequest implements IRequest<UserRequest,User>{
+public class UserRequest implements IRequest<UserRequest,User> {
 
     private UUID id;
 

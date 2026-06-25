@@ -1,11 +1,13 @@
 package com.digidata.escolar_geolocation.excexption;
 
+import br.com.digidata.crud.exception.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Collections;
 
 
@@ -104,7 +106,7 @@ public class GlobalExceptionHandler {
                         HttpStatus.INTERNAL_SERVER_ERROR.name(),
                         "Erro interno no servidor",
                         request.getRequestURI(),
-                        Collections.emptyList()
+                        Arrays.asList(ex.getMessage())
                 );
 
 

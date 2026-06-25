@@ -1,5 +1,6 @@
 package com.digidata.escolar_geolocation.controller.dto.response;
 
+import br.com.digidata.crud.controller.dto.response.IResponse;
 import com.digidata.escolar_geolocation.model.Location;
 import lombok.*;
 
@@ -12,7 +13,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class LocationResponse implements IResponse<Location, LocationResponse>{
+public class LocationResponse implements IResponse<Location, LocationResponse> {
 
     private UUID vehicleId;
     private Double latitude;

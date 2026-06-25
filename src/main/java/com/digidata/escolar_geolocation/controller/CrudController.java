@@ -1,21 +1,25 @@
 package com.digidata.escolar_geolocation.controller;
 
+import br.com.digidata.crud.controller.dto.request.IRequest;
+import br.com.digidata.crud.controller.dto.response.IResponse;
 import br.com.digidata.crud.service.ICrudService;
-import com.digidata.escolar_geolocation.controller.dto.request.IRequest;
-import com.digidata.escolar_geolocation.controller.dto.response.IResponse;
-import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.UUID;
 
-@RequiredArgsConstructor
-public class CrudController<Request , Response, Model> implements ICrudController<Request, Response>{
+public class CrudController<Request , Response, Model> implements ICrudController<Request, Response> {
 
     public final ICrudService<Model, UUID> service;
 
     public final IRequest<Request, Model> request;
 
     public final IResponse<Model, Response> response;
+
+    public CrudController(ICrudService<Model, UUID> service, IRequest<Request, Model> request, IResponse<Model, Response> response){
+        this.service = service;
+        this.request = request;
+        this.response = response;
+    }
 
     @Override
     public Response create(Request request) {
@@ -33,8 +37,8 @@ public class CrudController<Request , Response, Model> implements ICrudControlle
     }
 
     @Override
-    public Response findById(String id) throws Exception {
-        return response.to(service.findById(UUID.fromString(id)));
+    public Response findById(UUID id) {
+        return response.to(service.findById(id));
     }
 
     @Override

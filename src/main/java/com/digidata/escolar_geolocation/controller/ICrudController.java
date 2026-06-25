@@ -9,11 +9,11 @@ public interface ICrudController<Request, Response> {
     @PostMapping
     Response create(@RequestBody Request request);
     @PutMapping
-    Response update(@RequestBody Request request, @RequestParam UUID id);
+    Response update(@RequestBody Request request, @PathVariable UUID id);
     @GetMapping
     List<Response> list();
     @GetMapping("{id}")
-    Response findById(@PathVariable String id) throws Exception;
+    Response findById(@PathVariable UUID id);
     @DeleteMapping
-    void delete(@RequestParam UUID id);
+    void delete(@PathVariable UUID id);
 }
