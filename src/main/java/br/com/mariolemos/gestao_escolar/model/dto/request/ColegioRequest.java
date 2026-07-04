@@ -1,0 +1,48 @@
+package br.com.mariolemos.gestao_escolar.model.dto.request;
+import br.com.mariolemos.gestao_escolar.model.Colegio;
+import br.com.mariolemos.gestao_escolar.model.Endereco;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ColegioRequest {
+
+    private Long id;
+    @NotBlank(message = "Nome é obrigatório")
+    private String nome;
+    @NotBlank(message = "O horário não pode estar vazio")
+    @Pattern(
+            regexp = "([01]?[0-9]|2[0-3]):[0-5][0-9]",
+            message = "O horário deve estar no formato HH:mm (ex: 10:30)"
+    )
+
+    private String horario;
+    private EnderecoRequest endereco;
+    private List<ContatoRequest> contatos = new ArrayList<ContatoRequest>();
+
+
+    public static Colegio of(ColegioRequest colegioRequest){
+        Colegio colegio = new Colegio();
+
+        colegio.setNome(colegioRequest.getNome());
+        colegio.setHorario(colegioRequest.getHorario());
+        if(colegioRequest.endereco != null) {
+            colegio.setEndereco(EnderecoRequest.of(colegioRequest.getEndereco()));
+        }
+
+        if(!colegioRequest.contatos.isEmpty() ) {
+            colegio.setContatos(ContatoRequest.of(colegioRequest.getContatos()));
+        }
+
+        return colegio;
+    }
+}
